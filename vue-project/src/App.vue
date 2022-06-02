@@ -6,10 +6,8 @@
   const jwt = ref("");
   const decoded = ref("");
   let show = ref(false);
-  // console.log(jose);
 
   const token = ref("");
-  // const tokenExists = ref(false);
 
   setInterval( () => {
     compteur.value++;
@@ -20,7 +18,6 @@
   }
 
   function decode() {
-    // event.preventDefault();
     if (jwt.value) {
       decoded.value = jose.decodeJwt(jwt.value);
       show.value = true;
@@ -36,7 +33,6 @@
       token.value = localStorage.getItem('token');
     }
 
-    // console.log(localStorage);
   }
 
 </script>
@@ -81,6 +77,11 @@
       {{ token }}
     </p>
 
+    <hr>
+
+    <h1>Ex Avancé : Lien entre le système d'authentification du backend et celui du frontend </h1>
+
+    
   </main>
 
 </template>
