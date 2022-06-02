@@ -1,6 +1,7 @@
 <script setup>
   import {ref} from "vue";
   import * as jose from 'jose'
+  import axios from 'axios';
 
   const compteur = ref(0);
   const jwt = ref("");
