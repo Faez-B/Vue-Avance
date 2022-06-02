@@ -21,20 +21,22 @@
 
   function decode() {
     // event.preventDefault();
-    decoded.value = jose.decodeJwt(jwt.value);
-    show.value = true;
-
-    addLocalStorage();
+    if (jwt.value) {
+      decoded.value = jose.decodeJwt(jwt.value);
+      show.value = true;
+  
+      addLocalStorage();
+    }
   }
 
   function addLocalStorage() {
     // Si le token est vide
     if ( !token.value ) {
+      localStorage.setItem('token', jwt.value);
       token.value = localStorage.getItem('token');
-      localStorage.setItem('token', jwt);
     }
 
-    console.log(localStorage.setItem('token', jwt));
+    // console.log(localStorage);
   }
 
 </script>
