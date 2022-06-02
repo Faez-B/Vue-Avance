@@ -8,6 +8,9 @@
   let show = ref(false);
   // console.log(jose);
 
+  const token = ref("");
+  // const tokenExists = ref(false);
+
   setInterval( () => {
     compteur.value++;
   }, 1000 )
@@ -18,8 +21,22 @@
 
   function decode() {
     // event.preventDefault();
-    decoded.value = jose.decodeJwt(jwt.value);
-    show.value = true;
+    if (jwt.value) {
+      decoded.value = jose.decodeJwt(jwt.value);
+      show.value = true;
+  
+      addLocalStorage();
+    }
+  }
+
+  function addLocalStorage() {
+    // Si le token est vide
+    if ( !token.value ) {
+      localStorage.setItem('token', jwt.value);
+      token.value = localStorage.getItem('token');
+    }
+
+    // console.log(localStorage);
   }
 
 </script>
@@ -55,6 +72,15 @@
     <p v-if="show">
       {{ decoded }}
     </p>
+
+    <hr>
+
+    <h1>Ex 4</h1>
+
+    <p v-if="token">
+      {{ token }}
+    </p>
+
   </main>
 
 </template>
