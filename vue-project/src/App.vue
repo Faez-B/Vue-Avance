@@ -37,6 +37,10 @@
     }
   }
 
+  function deleteUser(id) {
+    users.value = users.value.filter( (user) => user.id != id );
+  }
+
 </script>
 
 <template>
@@ -52,7 +56,7 @@
     </p> -->
 
     <ul>
-      <li v-for="user in users" :key="user.id">
+      <li v-for="user in users" :key="user.id" @click="deleteUser(user.id)">
         {{ user }}
       </li>
     </ul>
