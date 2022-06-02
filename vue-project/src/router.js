@@ -4,6 +4,9 @@ import DemoVFor from "@/components/DemoVFor.vue";
 import ClassBinding from "@/components/ClassBinding.vue";
 import Ex3_4Vue from "@/components/Ex3_4.vue";
 import Ex1_2Vue from "./components/Ex1_2.vue";
+import AccueilVue from "./components/Accueil.vue";
+import Connexion from "@/components/Connexion.vue";
+import Inscription from "@/components/Inscription.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -11,6 +14,11 @@ const router = createRouter({
         {
             path: "/",
             name: "accueil",
+            component: AccueilVue
+        },
+        {
+            path: "/condition",
+            name: "condition",
             component: Condition
         },
         {
@@ -32,6 +40,16 @@ const router = createRouter({
             path: "/compteur",
             name: "compteur",
             component: Ex1_2Vue
+        },
+        {
+            path: "/connexion",
+            name: "connexion",
+            component: Connexion
+        },
+        {
+            path: "/inscription",
+            name: "inscription",
+            component: Inscription
         }
     ]
 });
