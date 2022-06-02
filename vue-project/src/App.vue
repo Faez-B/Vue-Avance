@@ -20,10 +20,15 @@
 
   function decode() {
     if (jwt.value) {
-      decoded.value = jose.decodeJwt(jwt.value);
+      try {
+        decoded.value = jose.decodeJwt(jwt.value);
+    
+        addLocalStorage();
+        
+      } catch (error) {
+        decoded.value = error.message;
+      }
       show.value = true;
-  
-      addLocalStorage();
     }
   }
 
