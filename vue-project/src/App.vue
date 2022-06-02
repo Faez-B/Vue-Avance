@@ -22,7 +22,8 @@ const { user, deconnexion } = useUserStore();
 
     </nav> -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-2">
+      <span class="navbar-brand" v-if="user">Hey {{ user.name }}</span>
       <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
           

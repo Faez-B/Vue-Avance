@@ -1,6 +1,7 @@
 
 <script setup>
     import {ref} from "vue";
+    import { useRoute, useRouter } from "vue-router";
 
     import { useUserStore } from '@/services/userStore';
 
@@ -9,6 +10,9 @@
     const name = ref("");
     const email = ref("");
 
+    const router = useRouter();
+    const route = useRoute();
+
     const onSubmit = () => {
         if (email.value && name.value) {
             const userConnect = ref({
@@ -16,8 +20,9 @@
                 email: email.value,
             })
 
-            // console.log(userConnect.value);
             fakeConnection(userConnect.value);
+
+            router.push("/");
         }
     }
 
