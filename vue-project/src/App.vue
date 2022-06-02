@@ -1,33 +1,33 @@
 <script setup>
-  import Ex1_2 from "@/components/Ex1_2.vue";
-  import Ex3_4 from "@/components/Ex3_4.vue";
-  import DemoVForVue from "@/components/DemoVFor.vue";
-
   import {ref} from "vue";
-  import axios from 'axios';
 
-  // const users = ref(null);
+  const user = ref(null);
+  const connected = ref(false);
 
-  // axios.get("http://localhost:8000/api/names")
-  // .then( (usersData) => {
-  //   users.value = usersData.data;
-  // })
+  const connexion = () => {
+    connected.value = true;
+    user.value = {
+      name: "John"
+    };
+  }
+
+  const deconnexion = () => {
+    connected.value = false;
+    user.value = null;
+  }
 
 </script>
 
 <template>
 
   <main>
-    <!-- <Ex1_2 /> -->
-    <!-- <Ex3_4 /> -->
 
-    <!-- <h1>Ex Avancé : Lien entre le système d'authentification du backend et celui du frontend </h1> -->
+    <h2 v-if="connected">Hello {{ user.name }}!</h2>
+    <h2 v-else>Hello Anonyme</h2>
 
-    <!-- <p>
-      {{ users }}
-    </p> -->
-
-    <DemoVForVue />
+    <button v-if="!connected" @click="connexion()">Connexion</button>
+    <button v-else @click="deconnexion()">Déconnexion</button>
+    
   </main>
 
 </template>
