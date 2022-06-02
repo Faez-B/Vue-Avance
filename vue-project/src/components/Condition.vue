@@ -23,7 +23,7 @@
   <main>
 
     <h2 v-if="connected">Hello {{ user.name }}!</h2>
-    <h2 v-else>Hello Anonyme</h2>
+    <h2 v-else class="text-danger">Hello Anonyme</h2>
 
     <button v-if="!connected" @click="connexion()">Connexion</button>
     <button v-else @click="deconnexion()">Déconnexion</button>
