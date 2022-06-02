@@ -36,16 +36,22 @@
 
   <main>
     <ul>
-      <li v-for="user in users" :key="user.id">
+      <li v-for="user in users" :key="user.id" class="m-2 mx-0">
+        <button @click="deleteUser(user.id)" class="btn btn-danger">X</button>
         {{ user }}
-        <button @click="deleteUser(user.id)">Supprimer</button>
       </li>
     </ul>
 
     <form @submit.prevent="ajouterUser()">
-      <input type="text" placeholder="Prénom" v-model="prenom">
-      <input type="text" placeholder="Nom" v-model="nom">
-      <button>Ajouter</button>
+      <div class="m-2 mx-0">
+        <input type="text" placeholder="Prénom" v-model="prenom">
+      </div>
+
+      <div class="m-2 mx-0">
+        <input type="text" placeholder="Nom" v-model="nom">
+      </div>
+      
+      <button class="btn btn-primary">Ajouter</button>
     </form>
   </main>
 
