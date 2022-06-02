@@ -10,6 +10,13 @@
 
   const token = ref("");
 
+  const users = ref(null);
+
+  axios.get("http://localhost:8000/api/names")
+  .then( (usersData) => {
+    users.value = usersData.data;
+  })
+
   setInterval( () => {
     compteur.value++;
   }, 1000 )
@@ -87,7 +94,9 @@
 
     <h1>Ex Avancé : Lien entre le système d'authentification du backend et celui du frontend </h1>
 
-    
+    <p>
+      {{ users }}
+    </p>
   </main>
 
 </template>
