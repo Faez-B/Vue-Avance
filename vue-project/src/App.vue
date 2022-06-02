@@ -28,13 +28,17 @@
     if (prenom.value && nom.value) {
       users.value.push({
         id: id.value++,
-        prenom : prenom.value,
-        nom : nom.value
+        prenom : prenom.value.trim(),
+        nom : nom.value.trim()
       });
 
       prenom.value = "";
       nom.value = "";
     }
+  }
+
+  function deleteUser(id) {
+    users.value = users.value.filter( (user) => user.id != id );
   }
 
 </script>
@@ -54,6 +58,7 @@
     <ul>
       <li v-for="user in users" :key="user.id">
         {{ user }}
+        <button @click="deleteUser(user.id)">Supprimer</button>
       </li>
     </ul>
 
