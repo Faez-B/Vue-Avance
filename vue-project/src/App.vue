@@ -1,74 +1,37 @@
 <script setup>
-  import Ex1_2 from "@/components/Ex1_2.vue";
-  import Ex3_4 from "@/components/Ex3_4.vue";
 
-  import {ref} from "vue";
-  import axios from 'axios';
-
-  // const users = ref(null);
-
-  // axios.get("http://localhost:8000/api/names")
-  // .then( (usersData) => {
-  //   users.value = usersData.data;
-  // })
-
-
-  let id = ref(0);
-
-  const users = ref([
-    {id : id.value++, prenom: "Alice", nom: "Smith"},
-    {id : id.value++, prenom: "Bob", nom: "Stark"},
-    {id : id.value++, prenom: "Charlie", nom: "Doe"}
-  ]);
-
-  const prenom = ref("");
-  const nom = ref("");
-
-  function ajouterUser() {
-    if (prenom.value && nom.value) {
-      users.value.push({
-        id: id.value++,
-        prenom : prenom.value.trim(),
-        nom : nom.value.trim()
-      });
-
-      prenom.value = "";
-      nom.value = "";
-    }
-  }
-
-  function deleteUser(id) {
-    users.value = users.value.filter( (user) => user.id != id );
-  }
+import {ref} from "vue";
 
 </script>
 
 <template>
 
   <main>
-    <!-- <Ex1_2 /> -->
-    <!-- <Ex3_4 /> -->
+    <nav>
+      <ul>
+        <li><RouterLink to="/">Accueil</RouterLink></li>
 
-    <!-- <h1>Ex Avancé : Lien entre le système d'authentification du backend et celui du frontend </h1> -->
+        <li>
+          <RouterLink :to="{name:'demovfor'}">Demo v-for</RouterLink>
+        </li>
 
-    <!-- <p>
-      {{ users }}
-    </p> -->
+        <li><RouterLink :to="{name:'compteur'}">Exo compteur</RouterLink></li>
+        <li><RouterLink :to="{name:'jwt'}">Exo jwt</RouterLink></li>
+        <li><RouterLink :to="{name:'form'}">Exo class binding</RouterLink></li>
 
-    <ul>
-      <li v-for="user in users" :key="user.id">
-        {{ user }}
-        <button @click="deleteUser(user.id)">Supprimer</button>
-      </li>
-    </ul>
+      </ul>
 
-    <form @submit.prevent="ajouterUser()">
-      <input type="text" placeholder="Prénom" v-model="prenom">
-      <input type="text" placeholder="Nom" v-model="nom">
-      <button>Ajouter</button>
-    </form>
+    </nav>
+
+    <RouterView />
+    <!-- <=> -->
+    <!-- <router-view></router-view> -->
+    <!-- <=> -->
+    <!-- <router-view/> -->
   </main>
 
 </template>
 
-<style></style>
+<style>
+  @import 'bootstrap/dist/css/bootstrap.min.css';
+</style>
