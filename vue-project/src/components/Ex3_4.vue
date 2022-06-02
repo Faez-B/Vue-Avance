@@ -8,6 +8,8 @@
 
   const token = ref("");
 
+  token.value = localStorage.getItem("token");
+  jwt.value = localStorage.getItem("token");
 
   function decode() {
     if (jwt.value) {
@@ -39,7 +41,7 @@
 
     <form @submit.prevent="decode();">
       <input type="text" v-model="jwt">
-      <input type="submit" value="Valider" />
+      <input type="submit" value="Valider" class="mx-2 btn btn-success" />
     </form>
 
     <p v-if="show">
