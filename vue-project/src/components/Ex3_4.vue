@@ -8,6 +8,8 @@
 
   const token = ref("");
 
+  token.value = localStorage.getItem("token");
+  jwt.value = localStorage.getItem("token");
 
   function decode() {
     if (jwt.value) {
