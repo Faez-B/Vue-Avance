@@ -8,6 +8,10 @@ import AccueilVue from "./components/Accueil.vue";
 import Connexion from "@/components/Connexion.vue";
 import Inscription from "@/components/Inscription.vue";
 
+import {useUserStore} from "@/services/userStore";
+
+const { user } = useUserStore();
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -24,12 +28,28 @@ const router = createRouter({
         {
             path: "/demovfor",
             name: "demovfor",
-            component: DemoVFor
+            component: DemoVFor,
+            beforeEnter: (to, from) => {
+                // reject the navigation
+                var isAuthenticated = false;
+                
+                if(user.value) isAuthenticated = true;
+                
+                return isAuthenticated;
+            }
         },
         {
             path: "/jwt",
             name: "jwt",
-            component: Ex3_4Vue
+            component: Ex3_4Vue,
+            beforeEnter: (to, from) => {
+                // reject the navigation
+                var isAuthenticated = false;
+                
+                if(user.value) isAuthenticated = true;
+                
+                return isAuthenticated;
+            }
         },
         {
             path: "/form",
