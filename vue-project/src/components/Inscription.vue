@@ -2,6 +2,8 @@
     import {ref} from "vue";
     import { useRoute, useRouter } from "vue-router";
 
+    // import axios from "axios";
+
     const name = ref("");
     const email = ref("");
     const mdp = ref("");
@@ -11,6 +13,20 @@
 
     function onSubmit() {
         if (name.value && email.value && mdp.value) {
+
+            // axios.post("http://localhost:8000/signup", {
+            //     email: email.value,
+            //     password: mdp.value
+            // })
+            // .then((res) => {
+            //     console.log(res);
+            // })
+
+            const userConnect = ref({
+                name: name.value,
+                email: email.value,
+            })
+
             router.push("/");
         }
     }
