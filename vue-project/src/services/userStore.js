@@ -1,7 +1,6 @@
 import {ref} from "vue";
 
 const user = ref(null);
-localStorage.removeItem("user");
 
 /**
  * TODO : vérifier dans le localStorage qu'il n'y a pas deja un user
