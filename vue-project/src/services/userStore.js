@@ -44,7 +44,6 @@ const deconnexion = () => {
     axios.get("http://localhost:8000/signout")
     .then(() => {
         console.log("déconnecter Node");
-        console.log(localStorage);
     })
     .catch( (err) => {
         console.log("Soucis lors de la déconnexion : " + err.message);

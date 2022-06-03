@@ -1,12 +1,16 @@
 <script setup>
   import {ref} from "vue";
   import * as jose from 'jose'
+  import axios from 'axios';
 
   const jwt = ref("");
   const decoded = ref("");
   let show = ref(false);
 
   const token = ref("");
+
+  const data = ref(null);
+
 
   token.value = localStorage.getItem("token");
   jwt.value = localStorage.getItem("token");
@@ -17,6 +21,21 @@
         decoded.value = jose.decodeJwt(jwt.value);
     
         addLocalStorage();
+
+        if (token.value){
+          axios.get("http://localhost:8000/moncompte", {
+              headers: { 
+                  "x-auth-token": token.value 
+              }
+          })
+          .then((res) => {
+              data.value = res.data;
+          })
+          .catch((err) => {
+              data.value = err.message;
+          })
+          ;
+        }
         
       } catch (error) {
         decoded.value = error.message;
@@ -57,6 +76,14 @@
     </p>
 
     <hr>
+
+    <h1>
+      Affichage des données du user
+    </h1>
+
+    <p>
+      {{ data }}
+    </p>
   </main>
 </template>
 
