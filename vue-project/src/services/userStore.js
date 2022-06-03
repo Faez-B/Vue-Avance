@@ -6,12 +6,14 @@ const user = ref(null);
  * TODO : vérifier dans le localStorage qu'il n'y a pas deja un user
  */
 
-function fakeConnection(userObj) {
+function fakeConnection(userObj, rememberMe) {
     // console.log("sign in");
     const userExist = localStorage.getItem("user");
     
     if (!userExist) {
-        localStorage.setItem("user", userObj);
+        if (rememberMe) {
+            localStorage.setItem("user", userObj);
+        }
         user.value = userObj;
     }
 
