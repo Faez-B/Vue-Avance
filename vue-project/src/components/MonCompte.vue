@@ -10,18 +10,11 @@
     }
 
     if (token.value){
-        axios.get("http://localhost:8000/moncompte", {
-            headers: { 
-                "x-auth-token": token.value 
-            }
-        })
-        .then((res) => {
-            data.value = res.data;
-        })
-        .catch((err) => {
-            data.value = err.message;
-        })
-        ;
+        axios.interceptors.request.use( (config) => {
+            config.headers.common["x-auth-token"] = token.value;
+            console.log(config.headers);
+            return config;
+        });
     }
 </script>
 
