@@ -9,18 +9,20 @@
         token.value = localStorage.getItem("token");
     }
 
-    axios.get("http://localhost:8000/moncompte", {
-        headers: { 
-            "x-auth-token": token.value 
-        }
-    })
-    .then((res) => {
-        data.value = res.data;
-    })
-    .catch((err) => {
-        data.value = err.message;
-    })
-    ;
+    if (token.value){
+        axios.get("http://localhost:8000/moncompte", {
+            headers: { 
+                "x-auth-token": token.value 
+            }
+        })
+        .then((res) => {
+            data.value = res.data;
+        })
+        .catch((err) => {
+            data.value = err.message;
+        })
+        ;
+    }
 </script>
 
 <template>
