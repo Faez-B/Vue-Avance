@@ -32,11 +32,12 @@ const router = createRouter({
             component: DemoVFor,
             beforeEnter: (to, from) => {
                 // reject the navigation
-                var isAuthenticated = false;
+                // var isAuthenticated = false;
                 
-                if(user.value) isAuthenticated = true;
+                // if(user.value) isAuthenticated = true;
                 
-                return isAuthenticated;
+                // return isAuthenticated;
+                if (!user.value) return { name: "accueil" }
             }
         },
         {
@@ -45,11 +46,12 @@ const router = createRouter({
             component: Ex3_4Vue,
             beforeEnter: (to, from) => {
                 // reject the navigation
-                var isAuthenticated = false;
+                // var isAuthenticated = false;
                 
-                if(user.value) isAuthenticated = true;
+                // if(user.value) isAuthenticated = true;
                 
-                return isAuthenticated;
+                // return isAuthenticated;
+                if (!user.value) return { name: "accueil" }
             }
         },
         {
@@ -65,17 +67,27 @@ const router = createRouter({
         {
             path: "/connexion",
             name: "connexion",
-            component: Connexion
+            component: Connexion,
+            beforeEnter: (to, from) => {
+                if (user.value) return { name: "accueil" }
+            }
+            
         },
         {
             path: "/inscription",
             name: "inscription",
-            component: Inscription
+            component: Inscription,
+            beforeEnter: (to, from) => {
+                if (user.value) return { name: "accueil" }
+            }
         },
         {
             path: "/moncompte",
             name: "moncompte",
-            component: MonCompteVue
+            component: MonCompteVue,
+            beforeEnter: (to, from) => {
+                if (!user.value) return { name: "accueil" }
+            }
         }
     ]
 });
