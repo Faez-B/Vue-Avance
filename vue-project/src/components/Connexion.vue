@@ -9,6 +9,7 @@
 
     const name = ref("");
     const email = ref("");
+    const mdp = ref("");
 
     const router = useRouter();
     const route = useRoute();
@@ -20,6 +21,7 @@
             const userConnect = ref({
                 name: name.value,
                 email: email.value,
+                mdp: mdp.value
             })
 
             fakeConnection(userConnect.value, rememberMe.value);
@@ -40,6 +42,11 @@
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Votre email" v-model="email">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Mot de passe</label>
+            <input type="password" class="form-control" id="email" placeholder="Mot de passe" v-model="mdp">
         </div>
 
         <div class="form-group">

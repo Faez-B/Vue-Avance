@@ -7,6 +7,7 @@ import Ex1_2Vue from "./components/Ex1_2.vue";
 import AccueilVue from "./components/Accueil.vue";
 import Connexion from "@/components/Connexion.vue";
 import Inscription from "@/components/Inscription.vue";
+import MonCompteVue from "@/components/MonCompte.vue";
 
 import {useUserStore} from "@/services/userStore";
 
@@ -70,6 +71,11 @@ const router = createRouter({
             path: "/inscription",
             name: "inscription",
             component: Inscription
+        },
+        {
+            path: "/moncompte",
+            name: "moncompte",
+            component: MonCompteVue
         }
     ]
 });

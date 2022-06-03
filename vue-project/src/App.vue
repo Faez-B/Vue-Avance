@@ -50,6 +50,10 @@ const { user, deconnexion } = useUserStore();
         <li v-if="!user" class="nav-item m-2 mt-0 mb-0">
           <RouterLink class="nav-link btn btn-warning" :to="{name:'inscription'}">S'inscrire</RouterLink>
         </li>
+        
+        <li v-if="user" class="nav-item m-2 mt-0 mb-0">
+          <RouterLink class="nav-link btn btn-success" :to="{name:'moncompte'}">Mon compte</RouterLink>
+        </li>
 
         <li v-if="user" class="nav-item m-2 mt-0 mb-0">
           <RouterLink class="nav-link btn btn-danger" :to="{name:'accueil'}" @click="deconnexion()">Déconnexion</RouterLink>
